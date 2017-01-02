@@ -124,3 +124,4 @@ Session.vim
 tags
 
 .idea/
+cmake-build-debug/
