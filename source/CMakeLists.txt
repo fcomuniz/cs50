@@ -6,3 +6,10 @@ add_executable(crack hacker2/crack.c)
 #        COMPILE_FLAGS "-lcrypt")
 target_link_libraries(crack crypt)
 
+
+add_custom_command(TARGET crack
+        POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy_if_different
+        ${CMAKE_CURRENT_SOURCE_DIR}/hacker2/test.txt $<TARGET_FILE_DIR:crack>)
+
+
