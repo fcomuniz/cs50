@@ -1,0 +1,41 @@
+1.
+It's an header file that defines many tipes based on integers and long values, defining the used types in the bmp file
+
+2.
+So that it is possible to have access to different types, not only int, long and long long.
+
+3.
+BYTE 1 byte
+DWORD 4 bytes 
+LONG 4 bytes
+WORD 2 bytes
+
+4. 
+0x4d42
+
+5.
+bfType is the size, in bytes, of the file
+biType is the number of bytes required by the BITMAPINFOHEADER structure
+
+6.
+It indicates that the bitmap is a top-down DIB( device independent bitmap) file, with it's origin at the top left corner
+
+7.
+The biBitCount is the element of the structure that defines the number of bytes per pixel
+
+8.
+In line 24 the file that fopen tries to open may not exist, thus returning NULL
+in line 32 the file may occupy space that the system does not have, returning NULL, indicating the system has not been able to allocate the necessary space
+
+9.
+It means that we only want to read one structure from the following bytes, and not try to read more than one structure
+If we were to put values in an array, we could read more than one structure and put in the array
+
+10.
+1
+
+11.
+fseek makes it possible to change the position of the "cursor" in the file, and, the way it is used in the code, it skips over the existing padding in the code
+
+12.
+SEEK_CUR is a flag that indicates to fseek that the "cursor" must be changed to a position relative to the current "cursor" position
