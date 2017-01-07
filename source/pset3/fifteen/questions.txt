@@ -1,0 +1,9 @@
+questions.txt
+
+Computer Science 50
+Problem Set 3
+
+0. it allows dimensions of the board from 3 x 3 to 9 x 9
+1. Is a two dimensional integer array
+2. the function greet()
+3. init, draw, move and won
