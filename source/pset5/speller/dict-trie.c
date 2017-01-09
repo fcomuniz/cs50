@@ -44,12 +44,31 @@ void push( dict_trie * trie, const char * word ) {
 
 bool hasWord(const dict_trie * node, const char * word){
 
+    bool retValue = false;
 //    iterate through the trie to find if it has a word or not
-    return  false;
+    if(node == NULL){
+        return false;
+    }
+    if(strlen(word) > 0){
+        retValue = hasWord(node->children[getCharPosition(word)], word+1);
+    } else {
+//        Check if word is there
+        retValue = node->hasValue;
+    }
+    return  retValue;
 }
 
 int getSize(const dict_trie * node){
-    return 0;
+    int retValue = 0;
+    if(node !=NULL ){
+        if(node->hasValue == true){
+            retValue++;
+        }
+        for(int i = 0 ; i < N_OF_LETTERS ; i++){
+            retValue += getSize(node->children[i]);
+        }
+    }
+    return retValue;
 }
 
 int getCharPosition(const char * charToFind){

@@ -97,9 +97,44 @@ void pushtest(){
     destroy(trie);
 }
 
+void pushWord(dict_trie * trie, const char * word, int * size){
+    push(trie, word);
+    (*size)++;
+}
+
+void sizetest(){
+
+    dict_trie * trie;
+    trie = createTrieNode();
+    int realSize = 0;
+    pushWord(trie,"test\'s", &realSize);
+    pushWord(trie, "testing", &realSize);
+    pushWord(trie, "fucking", &realSize);
+    pushWord(trie, "more", &realSize);
+    pushWord(trie, "words", &realSize);
+    int size = getSize(trie);
+    printf("realSize: %i\nsize: %i\n", realSize, size);
+    destroy(trie);
+}
+
+void haswordtest(){
+
+    dict_trie * trie;
+    trie = createTrieNode();
+    const char * word = "test\'s";
+    push(trie,word);
+    push(trie, "testing");
+    bool hasThisWord = hasWord(trie, word);
+
+    printf("hasThisWord: %i\n", hasThisWord);
+    destroy(trie);
+}
 
 int main(int argc, char * argv[]){
-    destroytest();
-    pushtest();
+//    destroytest();
+//    pushtest();
+//    sizetest();
+    haswordtest();
     return 0;
+
 }
