@@ -1,0 +1,31 @@
+0.  it is an English word that refers to a lung disease that is otherwise known as silicosis.
+It is also an example of a very large word for the dictionary
+
+1. Returns the resource usage measures for a certain set or subset of the existing process, passed as the first parameter of the function
+
+2.  16 members
+3.  To consume less memory and time, as you pass a copy of a pointer to the value, which has a small size.
+If you were to pass the argument by value, the computer would have to copy all 16 members of the struct every time the function was called
+4.
+
+First of all the main function tries to read every character of the file
+At the beggining of a loop, it checks if the character read is EOF or not, to know if the file has been completely read or if you must continue reading the file
+
+Then it get into a couple of comparisons
+
+First it checks if the read character is alphabetic or it is an apostrophe somewhere that is not in the beggining of the word, and if that is true, it appends the char to the current word being processed.
+
+If the char doesn't return true in the previous conditions, we check if it is a digit, and discard the word that has that digit, moving in the file to the next alphabetic character or until the file has ended
+
+Then, if the char is neither alphabetical or numeric, we can consider that a word has ended, so we put a null terminator in the string and update the words counter, checking if the word is correctly spelled printing it if it is incorrect and then it goes after the next word
+
+
+
+
+
+
+
+
+5.  Fscanf does not garantee that the input string will not be bigger than the size of the string that is set to hold it, causing a problem called buffer overflow, that can make vary bad things happen
+6.  To guarantee that the passed string won't be modified inside those functions, which may cause some hard to find bug, if those values are possible to be changes
+

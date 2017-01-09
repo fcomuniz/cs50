@@ -77,9 +77,6 @@ nbdist/
 ### C++ template
 # Prerequisites
 *.d
-*
-!/**/
-!*.*
 
 
 # Compiled Object files
