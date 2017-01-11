@@ -1,5 +1,5 @@
-set(SRCS dictionary.c speller.c)
-set(HDRS dictionary.h)
+set(SRCS dictionary.c speller.c dict-trie.c)
+set(HDRS dictionary.h dict-trie.h)
 add_executable(speller ${SRCS})
 
 

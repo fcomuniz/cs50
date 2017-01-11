@@ -58,8 +58,8 @@ bool hasWord(const dict_trie * node, const char * word){
     return  retValue;
 }
 
-int getSize(const dict_trie * node){
-    int retValue = 0;
+unsigned int getSize(const dict_trie * node){
+    unsigned int retValue = 0;
     if(node !=NULL ){
         if(node->hasValue == true){
             retValue++;

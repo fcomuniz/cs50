@@ -133,8 +133,8 @@ void haswordtest(){
 int main(int argc, char * argv[]){
 //    destroytest();
 //    pushtest();
-//    sizetest();
-    haswordtest();
+    sizetest();
+//    haswordtest();
     return 0;
 
 }

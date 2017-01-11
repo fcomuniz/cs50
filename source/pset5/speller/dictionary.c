@@ -6,6 +6,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <ctype.h>
+#include <stdio.h>
 #include "dictionary.h"
 #include "dict-trie.h"
 
@@ -14,7 +15,6 @@
  */
 bool check(const char *word)
 {
-    // TODO
     bool retValue = false;
     //    First of all, we must put the word to lower case, as load will also put words with lower case values in the dictionary
     char * compareWord = strdup(word);
@@ -23,8 +23,7 @@ bool check(const char *word)
         compareWord[i] = tolower(compareWord[i]);
     }
 
-
-
+    retValue = hasWord(trie,compareWord);
     free(compareWord);
     return retValue;
 }
@@ -34,11 +33,51 @@ bool check(const char *word)
  */
 bool load(const char *dictionary)
 {
-    // TODO
+    trie = createTrieNode();
+
+//    Open dictionary file
+
+    FILE * dict = fopen(dictionary, "r");
+    if(dict == NULL){
+        return false;
+    }
 
 
+    char line[LENGTH];
 
-    return false;
+    int index = 0;
+    for (int c = fgetc(dict); c != EOF; c = fgetc(dict))
+    {
+        // allow only alphabetical characters and apostrophes
+        if (isalpha(c) || (c == '\'' && index > 0))
+        {
+            // append character to word
+            line[index] = c;
+            index++;
+        }
+            // ignore words with numbers (like MS Word can)
+        else if (isdigit(c))
+        {
+            // consume remainder of alphanumeric string
+            while ((c = fgetc(dict)) != EOF && isalnum(c));
+
+            // prepare for new word
+            index = 0;
+        }
+
+            // we must have found a whole word
+        else if (index > 0)
+        {
+            // terminate current word
+            line[index] = '\0';
+            push(trie,line);
+            index = 0;
+        }
+
+    }
+
+    fclose(dict);
+    return true;
 }
 
 /**
@@ -46,8 +85,7 @@ bool load(const char *dictionary)
  */
 unsigned int size(void)
 {
-    // TODO
-    return 0;
+    return getSize(trie);
 }
 
 /**
@@ -55,6 +93,6 @@ unsigned int size(void)
  */
 bool unload(void)
 {
-    // TODO
-    return false;
+    destroy(trie);
+    return true;
 }

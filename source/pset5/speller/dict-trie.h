@@ -29,7 +29,7 @@ void push( dict_trie * node, const char * word );
 
 bool hasWord(const dict_trie * node, const char * word);
 
-int getSize(const dict_trie * node);
+unsigned int getSize(const dict_trie * node);
 
 int getCharPosition(const char * charToFind);
 
