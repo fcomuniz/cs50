@@ -15,6 +15,7 @@ pip-selfcheck.json
 ### Ninja template
 .ninja_deps
 .ninja_log
+*.nja
 ### C template
 # Prerequisites
 *.d
